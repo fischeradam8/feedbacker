@@ -1,0 +1,7 @@
+qr:
+    resource: '@AppBundle/Controller/QrController.php'
+    type: annotation
+
+email:
+    resource: '@AppBundle/Controller/EmailController.php'
+    type: annotation
