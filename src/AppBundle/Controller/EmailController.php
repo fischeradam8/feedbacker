@@ -28,15 +28,14 @@ class EmailController extends Controller
                 ->setSubject($title)
                 ->setBody($feedback);
             $this->get('mailer')->send($message);
-
         }
         else {
             $email = rawurldecode($request->get('email'));
             $request->getSession()->set('email', $email);
-            return $this->render('default/email.html.twig', [
-                'form' => $form->createView(),
-            ]);
         }
+        return $this->render('default/email.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
 }
