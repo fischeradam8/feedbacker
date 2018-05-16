@@ -23,8 +23,8 @@ monolog:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
+    transport: smtp
+    host: smtp.sendgrid.net
     username: '%env(MAILER_USER)%'
     password: '%env(MAILER_PASSWORD)%'
     spool: { type: memory }
