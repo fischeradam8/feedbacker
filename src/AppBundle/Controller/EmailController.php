@@ -14,8 +14,7 @@ class EmailController extends Controller
      */
     public function emailAction(Request $request)
     {
-        $iv = $request->get('iv');
-        $title = openssl_decrypt($request->get('title'), 'aes-256-cbc', 'abcde', 0, $iv);
+        $title = rawurldecode($request->get('title'));
         $form = $this->createForm(FeedbackType::class, null, [
             'title' => $title,
         ]);
@@ -32,7 +31,7 @@ class EmailController extends Controller
 
         }
         else {
-            $email = openssl_decrypt($request->get('email'), 'aes-256-cbc', 'abcde', 0, $iv);
+            $email = rawurldecode($request->get('email'));
             $request->getSession()->set('email', $email);
             return $this->render('default/email.html.twig', [
                 'form' => $form->createView(),

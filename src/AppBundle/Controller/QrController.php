@@ -19,13 +19,11 @@ class QrController extends Controller
      */
     public function generate(Request $request)
     {
-        $key = 'abcde';
-        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $email = openssl_encrypt($form->get('email')->getData(), 'aes-256-cbc', $key, 0, $iv);
-            $title = openssl_encrypt($form->get('title')->getData(), 'aes-256-cbc', $key, 0, $iv);
+            $email = rawurlencode($form->get('email')->getData());
+            $title = rawurlencode($form->get('title')->getData());
 
             $options = [
                 'code' => $this->generateUrl('email', [
