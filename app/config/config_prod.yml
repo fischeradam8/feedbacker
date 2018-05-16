@@ -1,6 +1,5 @@
 imports:
     - { resource: config.yml }
-    - { resource: api.yml }
 
 #doctrine:
 #    orm:
@@ -21,3 +20,12 @@ monolog:
         console:
             type: console
             process_psr_3_messages: false
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%env(MAILER_USER)%'
+    password: '%env(MAILER_PASSWORD)%'
+    spool: { type: memory }
+    logging:  '%kernel.debug%'
