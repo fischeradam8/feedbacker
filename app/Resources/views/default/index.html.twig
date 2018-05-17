@@ -8,7 +8,10 @@
                 <div class="container border rounded">
                     <h3 class="text-center">Tesztike</h3>
                         <div class="container border rounded">
-                            <p>Ez itt a lorem ipsum</p>
+                            <p>1. Add meg az e-mail címed, ahova a visszajelzést szeretnéd kapni!</p>
+                            <p>2. Add meg az előadásod címét!</p>
+                            <p>3. Állítsd be a QR kód színét és méretét!</p>
+                            <p>4. Az elkészült QR kódot próbáld ki, majd másold be az előadásodba!</p>
                         </div>
                     <div class="d-flex mt-3 container border rounded">
                         {{ form_start(form, {'action': path('homepage'), 'method': 'POST', 'attr': {'target':'_blank'}}) }}
@@ -16,6 +19,15 @@
                     </div>
                     <div class="d-flex mt-3 container border rounded">
                         {{ form_row(form.title) }}
+                    </div>
+                    <div class="d-flex mt-3 container border rounded">
+                        {{ form_row(form.color) }}
+                    </div>
+                    <div class="d-flex mt-3 container border rounded">
+                        {{ form_row(form.size) }}
+                    </div>
+                    <div class="d-flex mt-3 mb-3 container border rounded justify-content-center">
+                        {{ form_row(form.submit) }}
                     </div>
                 {{ form_end(form) }}
                 </div>

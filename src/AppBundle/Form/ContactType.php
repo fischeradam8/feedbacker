@@ -15,9 +15,21 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('title', TextType::class)
-            ->add('color', ColorType::class)
+            ->add('email', EmailType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Az előadó e-mail címe',
+                ]
+            ])
+            ->add('title', TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Az előadás címe',
+                ]
+            ])
+            ->add('color', ColorType::class, [
+                'label' => false,
+            ])
             ->add('size', RangeType::class, [
                 'attr' => [
                     'min' => 10,
