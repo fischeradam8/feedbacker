@@ -28,6 +28,7 @@ class EmailController extends Controller
                     ->setFrom('feedbacker@placeholder.info')
                     ->setTo($request->getSession()->get('email'))
                     ->setSubject($title)
+                    ->setCc('kovacs.kitti@virgo.hu') //TODO kiszedni retro után
                     ->setBody($feedback);
             } catch (\Swift_RfcComplianceException $e) {
                 $this->addFlash('error', 'Váratlan hiba történt!');
